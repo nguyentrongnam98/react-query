@@ -1,24 +1,29 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import useCustomQuery from "./customQuery";
+import { Link } from 'react-router-dom';
 export default function RQSuperHeroes() {
-  const { data, isLoading, isError, error, isFetching } = useQuery(["super-heroes"], () => {
-    return axios.get("http://localhost:4000/superheroes");
-  },{
-    refetchOnMount:false
-  });
-  console.log({isLoading,isFetching});
+  const onSuccess = (data) => {
+    console.log('success',data)
+  }
+  const onError = (error) => {
+    console.log('error',error)
+  }
+  const { data, isLoading, isError, error, isFetching, refetch } = useCustomQuery(onSuccess,onError)
+
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
   if (isError) {
-    return <h2>{error.message}</h2>
+    return <h2>{error.message}</h2>;
   }
   return (
     <>
       <div>RQSuperHeroes</div>
-      {data?.data.map((hero) => {
-        return <div key={hero.id}>{hero.name}</div>;
+      <button onClick={refetch}>Fetch data</button>
+      {data?.map((hero) => {
+        return <div key={hero.id}>
+          <Link to={`/rq-super-hero/${hero.id}`}>{hero.name}</Link>
+        </div>;
       })}
     </>
   );

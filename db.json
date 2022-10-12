@@ -14,6 +14,33 @@
             "id":3,
             "name":"Ironman",
             "alertEgo":"Tony Stack"
+        },
+        {
+            "id":4,
+            "name":"Hulk",
+            "alertEgo":"Hulky"
+        },
+        {
+            "id":5,
+            "name":"Goldman",
+            "alertEgo":"GoldAtc"
+        },
+        {
+            "id":6,
+            "name":"BlackAdam",
+            "alertEgo":"Tom"
+        }
+    ],
+    "student": [
+        {
+            "id": 1,
+            "name" : "Nam",
+            "age" : 23
+        },
+        {
+            "id": 2,
+            "name" : "Duc",
+            "age" : 23
         }
     ]
 }
